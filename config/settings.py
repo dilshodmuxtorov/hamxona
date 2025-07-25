@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_yasg',
+    # local
+    'Student',
+    "university"
 ]
 
 MIDDLEWARE = [
