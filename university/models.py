@@ -1,12 +1,13 @@
 from django.db import models
 
+
 class UniversityModel(models.Model):
     CHOICES = [
-        ("tashkent","Toshkent sh."),
+        ("tashkent", "Toshkent sh."),
         ("r-tashkent", "Toshkent v."),
         ("namangan", "Namangan"),
-        ("fergana", "Farg'ona"), 
-        ('andijan', "Andijon")
+        ("fergana", "Farg'ona"),
+        ("andijan", "Andijon"),
     ]
     name = models.CharField(max_length=255, default="")
     region = models.CharField(choices=CHOICES, max_length=65)
@@ -16,21 +17,21 @@ class UniversityModel(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         db_table = "university"
         verbose_name = "Universitet"
         verbose_name_plural = "Universitetlar"
+
 
 class DormitoryModel(models.Model):
     name = models.CharField(max_length=255)
     university_id = models.ForeignKey(UniversityModel, on_delete=models.CASCADE)
     capacity = models.IntegerField(default=0)
 
-
     def __str__(self):
         return self.name
-    
+
     class Meta:
         db_table = "dormitory"
         verbose_name = "Yotoqxona"
@@ -43,3 +44,25 @@ class RoomModel(models.Model):
     capacity = models.IntegerField(default=0)
     dormitory_id = models.ForeignKey(DormitoryModel, on_delete=models.CASCADE)
     price = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.number
+
+    class Meta:
+        db_table = "room"
+        verbose_name = "Xona"
+        verbose_name_plural = "Xonalar"
+
+
+class FurnitureModel(models.Model):
+    name = models.CharField(max_length=255, default="")
+    quantity = models.IntegerField(default=0)
+    room_id = models.ForeignKey(RoomModel, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "furniture"
+        verbose_name = "Jihoz"
+        verbose_name_plural = "Jihozlar"
