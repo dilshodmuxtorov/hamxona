@@ -8,6 +8,15 @@ class UniversityModel(models.Model):
         ("namangan", "Namangan"),
         ("fergana", "Farg'ona"),
         ("andijan", "Andijon"),
+        ("buxara", "Buxoro"),
+        ("qoraqalpagistan", "Qoraqolpog'iston"),
+        ("samarkand", "Samarqand"),
+        ("sirdaryo", "Sirdaryo"),
+        ("navoiy", "Navoiy"),
+        ("jizzakh", "Jizzax"),
+        ("surkhandarya", "Surxondaryo"),
+        ("kashkadarya", "Qashqadaryo"),
+        ("khorezm", "Xorazm"),
     ]
     name = models.CharField(max_length=255, default="")
     region = models.CharField(choices=CHOICES, max_length=65)

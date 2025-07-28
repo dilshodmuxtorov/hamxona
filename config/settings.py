@@ -28,8 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drf_yasg',
     # local
-    'Student',
-    "university"
+    "university",
+    "User"
 ]
 
 MIDDLEWARE = [
