@@ -1,6 +1,7 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import datetime
 
 load_dotenv()
 
@@ -73,8 +74,20 @@ SWAGGER_SETTINGS = {
     },
 }
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(days=7),
+    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=14),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTPS_AUTHORIZATION",
+    "USER_ID_CLAIM": "id",
+    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
 
 DATABASES = {
     'default': {
