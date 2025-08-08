@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserModel
+from .models import UserModel, OTP
 
 
 @admin.register(UserModel)
@@ -35,3 +35,6 @@ class UserModelAdmin(admin.ModelAdmin):
         ),
         ("Identification", {"fields": ("passport_number", "pinfll")}),
     )
+
+
+admin.site.register(OTP)
